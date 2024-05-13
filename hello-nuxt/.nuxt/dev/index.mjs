@@ -820,6 +820,7 @@ const errorHandler = (async function errorhandler(error, event) {
 });
 
 const _lazy_6E2OHh = () => Promise.resolve().then(function () { return addMemberInfo$1; });
+const _lazy_TIVxFg = () => Promise.resolve().then(function () { return generateError$1; });
 const _lazy_P1jHZM = () => Promise.resolve().then(function () { return getMemberList$1; });
 const _lazy_nKeK1y = () => Promise.resolve().then(function () { return getOneMemberInfo$1; });
 const _lazy_f5JwC1 = () => Promise.resolve().then(function () { return members_get$1; });
@@ -829,6 +830,7 @@ const _lazy_Ccb2mn = () => Promise.resolve().then(function () { return renderer$
 
 const handlers = [
   { route: '/api/addMemberInfo', handler: _lazy_6E2OHh, lazy: true, middleware: false, method: undefined },
+  { route: '/api/generateError', handler: _lazy_TIVxFg, lazy: true, middleware: false, method: undefined },
   { route: '/api/getMemberList', handler: _lazy_P1jHZM, lazy: true, middleware: false, method: undefined },
   { route: '/api/getOneMemberInfo', handler: _lazy_nKeK1y, lazy: true, middleware: false, method: undefined },
   { route: '/member-management/members', handler: _lazy_f5JwC1, lazy: true, middleware: false, method: "get" },
@@ -1059,6 +1061,15 @@ const addMemberInfo$1 = /*#__PURE__*/Object.freeze({
   default: addMemberInfo
 });
 
+const generateError = defineEventHandler((event) => {
+  throw createError("\u30B5\u30FC\u30D0\u5074\u3067\u306E\u30A8\u30E9\u30FC\u767A\u751F");
+});
+
+const generateError$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: generateError
+});
+
 function createMemberList() {
   const memberListInit = /* @__PURE__ */ new Map();
   memberListInit.set(33456, {
@@ -1102,8 +1113,17 @@ const getOneMemberInfo$1 = /*#__PURE__*/Object.freeze({
   default: getOneMemberInfo
 });
 
-const members_get = defineEventHandler((event) => {
-  const memberList = createMemberList();
+const members_get = defineEventHandler(async (event) => {
+  let memberList = /* @__PURE__ */ new Map();
+  const storage = useStorage();
+  const memberListStorage = await storage.getItem(
+    "local:member-management_members"
+  );
+  if (memberListStorage !== void 0) {
+    console.log("STORAGE = ", memberListStorage);
+    memberList = new Map(memberListStorage);
+    console.log("MAP = ", memberList);
+  }
   const memberListValues = memberList.values();
   const memberListArray = Array.from(memberListValues);
   return {
@@ -1120,7 +1140,17 @@ const members_get$1 = /*#__PURE__*/Object.freeze({
 const members_post = defineEventHandler(async (event) => {
   const body = await readBody(event);
   const member = body;
-  console.log(member);
+  let memberList = /* @__PURE__ */ new Map();
+  const storage = useStorage();
+  const memberListStorage = await storage.getItem(
+    "local:member-management_members"
+  );
+  if (memberListStorage !== void 0) {
+    memberList = new Map(memberListStorage);
+  }
+  memberList.set(member.id, member);
+  await storage.setItem("local:member-management_members", [...memberList]);
+  console.log("\u3082\u3057\u3084 = ", member);
   return {
     result: 1,
     data: [member]
@@ -1132,9 +1162,16 @@ const members_post$1 = /*#__PURE__*/Object.freeze({
   default: members_post
 });
 
-const _id__get = defineEventHandler((event) => {
+const _id__get = defineEventHandler(async (event) => {
   const params = event.context.params;
-  const memberList = createMemberList();
+  let memberList = /* @__PURE__ */ new Map();
+  const storage = useStorage();
+  const memberListStorage = await storage.getItem(
+    "local:member-management_members"
+  );
+  if (memberListStorage !== void 0) {
+    memberList = new Map(memberListStorage);
+  }
   const idNo = Number(params.id);
   const member = memberList.get(idNo);
   return {

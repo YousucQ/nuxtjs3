@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>サーバサイドルーティング</h1>
+    <h1>サーバストレージ</h1>
   </header>
   <main>
     <h1>会員管理</h1>

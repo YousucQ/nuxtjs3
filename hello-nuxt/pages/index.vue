@@ -1,3 +1,25 @@
+<template>
+  <ul>
+    <li>
+      <NuxtLink :to="{ name: 'errorHandlerBasic' }">エラー表示実験</NuxtLink>
+    </li>
+    <li>
+      <NuxtLink :to="{ name: 'errorHandlerNavigate' }"
+        >画面表示時のエラー表示実験</NuxtLink
+      >
+    </li>
+    <li>
+      <NuxtLink :to="{ name: 'errorHandlerFatal' }"
+        >致命的エラー発生実験</NuxtLink
+      >
+    </li>
+    <li>
+      <NuxtLink :to="{ name: 'errorHandlerServer' }"
+        >サーバエラー発生実験</NuxtLink
+      >
+    </li>
+  </ul>
+</template>
 <script setup lang="ts">
 import type { City } from "@/state/interfaces";
 
@@ -5,7 +27,7 @@ import type { City } from "@/state/interfaces";
 const cityList = useState<Map<number, City>>("cityList");
 </script>
 
-<template>
+<!-- <template>
   <h1>TOP</h1>
   <nav id="breadcrumbs">
     <ul>
@@ -18,9 +40,9 @@ const cityList = useState<Map<number, City>>("cityList");
         会員管理はこちら
       </NuxtLink>
     </p>
-  </section>
+  </section> -->
 
-  <!-- <section>
+<!-- <section>
     <h2>都市リスト</h2>
     <ul>
       <li v-for="[id, city] in cityList" v-bind:key="id">
@@ -30,7 +52,7 @@ const cityList = useState<Map<number, City>>("cityList");
       </li>
     </ul>
   </section> -->
-</template>
+<!-- </template> -->
 
 <!-- <template>
   <section>

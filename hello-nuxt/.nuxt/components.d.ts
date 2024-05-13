@@ -1,6 +1,10 @@
 
 interface _GlobalComponents {
-      'OneMember': typeof import("../components/OneMember.vue")['default']
+      'ErrorGeneratorBasic': typeof import("../components/ErrorGeneratorBasic.vue")['default']
+    'ErrorGeneratorFatal': typeof import("../components/ErrorGeneratorFatal.vue")['default']
+    'ErrorGeneratorImmediate': typeof import("../components/ErrorGeneratorImmediate.vue")['default']
+    'ErrorGeneratorServer': typeof import("../components/ErrorGeneratorServer.vue")['default']
+    'OneMember': typeof import("../components/OneMember.vue")['default']
     'OneSection': typeof import("../components/OneSection.vue")['default']
     'TheBasicSection': typeof import("../components/TheBasicSection.vue")['default']
     'PartsTheSupplement': typeof import("../components/parts/TheSupplement.vue")['default']
@@ -25,7 +29,11 @@ interface _GlobalComponents {
     'Head': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Head']
     'Html': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
-      'LazyOneMember': typeof import("../components/OneMember.vue")['default']
+      'LazyErrorGeneratorBasic': typeof import("../components/ErrorGeneratorBasic.vue")['default']
+    'LazyErrorGeneratorFatal': typeof import("../components/ErrorGeneratorFatal.vue")['default']
+    'LazyErrorGeneratorImmediate': typeof import("../components/ErrorGeneratorImmediate.vue")['default']
+    'LazyErrorGeneratorServer': typeof import("../components/ErrorGeneratorServer.vue")['default']
+    'LazyOneMember': typeof import("../components/OneMember.vue")['default']
     'LazyOneSection': typeof import("../components/OneSection.vue")['default']
     'LazyTheBasicSection': typeof import("../components/TheBasicSection.vue")['default']
     'LazyPartsTheSupplement': typeof import("../components/parts/TheSupplement.vue")['default']
@@ -64,6 +72,10 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
+export const ErrorGeneratorBasic: typeof import("../components/ErrorGeneratorBasic.vue")['default']
+export const ErrorGeneratorFatal: typeof import("../components/ErrorGeneratorFatal.vue")['default']
+export const ErrorGeneratorImmediate: typeof import("../components/ErrorGeneratorImmediate.vue")['default']
+export const ErrorGeneratorServer: typeof import("../components/ErrorGeneratorServer.vue")['default']
 export const OneMember: typeof import("../components/OneMember.vue")['default']
 export const OneSection: typeof import("../components/OneSection.vue")['default']
 export const TheBasicSection: typeof import("../components/TheBasicSection.vue")['default']
@@ -89,6 +101,10 @@ export const Style: typeof import("../node_modules/nuxt/dist/head/runtime/compon
 export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Head']
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
+export const LazyErrorGeneratorBasic: typeof import("../components/ErrorGeneratorBasic.vue")['default']
+export const LazyErrorGeneratorFatal: typeof import("../components/ErrorGeneratorFatal.vue")['default']
+export const LazyErrorGeneratorImmediate: typeof import("../components/ErrorGeneratorImmediate.vue")['default']
+export const LazyErrorGeneratorServer: typeof import("../components/ErrorGeneratorServer.vue")['default']
 export const LazyOneMember: typeof import("../components/OneMember.vue")['default']
 export const LazyOneSection: typeof import("../components/OneSection.vue")['default']
 export const LazyTheBasicSection: typeof import("../components/TheBasicSection.vue")['default']

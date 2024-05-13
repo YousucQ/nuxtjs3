@@ -1,8 +1,9 @@
 <template>
-  <NuxtLayout>
-    <!-- <p>こんにちは</p> -->
+  <!-- <NuxtLayout>
     <NuxtPage />
-  </NuxtLayout>
+  </NuxtLayout> -->
+
+  <NuxtPage />
 
   <!-- <header>
     <h1>{{ SITE_TITLE }}</h1>

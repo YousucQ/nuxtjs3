@@ -6,6 +6,9 @@ declare module 'nitropack' {
     '/api/addMemberInfo': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/addMemberInfo').default>>>>
     }
+    '/api/generateError': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/generateError').default>>>>
+    }
     '/api/getMemberList': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/getMemberList').default>>>>
     }

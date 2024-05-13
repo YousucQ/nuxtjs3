@@ -15,6 +15,7 @@
     <p v-if="pending">データ取得中...</p>
     <section v-else>
       <ul>
+        <li v-if="isEmptyList">会員情報は存在しません。</li>
         <li v-for="member in memberList" :key="member.id">
           <NuxtLink
             :to="{ name: 'member-memberDetail-id', params: { id: member.id } }"
@@ -45,6 +46,10 @@ const memberList = computed((): Member[] => {
     returnList = responseData.value.data;
   }
   return returnList;
+});
+
+const isEmptyList = computed((): boolean => {
+  return memberList.value.length == 0;
 });
 </script>
 <style></style>
