@@ -17,7 +17,7 @@ const params: {
 	lang: "ja",
 	q: selectedCity.value.q,
 	//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
-	appid: "a1bedd41ace7e5b960451cfcea2ae584",
+	appid: "xxxxxx",
 };
 
 const asyncData = await useFetch("https://api.openweathermap.org/data/2.5/weather", {
