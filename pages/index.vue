@@ -1,43 +1,21 @@
 <script setup lang="ts">
-// import type {User} from "@/interfaces";
+import type {City} from "@/interfaces";
 
-// console.log("index.vue started");
-definePageMeta({
-	middleware: ["loggedin-check"]
-	// middleware: ["logging", "loggedin-check"]
-	// middleware: ["loggedin-check", "logging"]
-	// middleware: (to, from) => {
-	// 	const loginTokenCookie = useCookie<string|null>("loginToken");
-	// 	const loginUserCookie = useCookie<User|null>("loginUser");
-	// 	if(loginTokenCookie.value  == null || loginUserCookie.value == null) {
-	// 		return navigateTo("/login");
-	// 		// return abortNavigation();
-	// 		// return abortNavigation(new Error());
-	// 	}
-	// 	else {
-	// 		return;
-	// 	}
-	// }
-});
-// const loginTokenCookie = useCookie<string|null>("loginToken");
-// const loginUserCookie = useCookie<User|null>("loginUser");
-// if(loginTokenCookie.value  == null || loginUserCookie.value == null) {
-// 	await navigateTo("/login");
-// }
+//都市情報リストをステートから取得。
+const cityList = useState<Map<number, City>>("cityList");
 </script>
 
 <template>
-	<h1>TOP</h1>
-	<nav id="breadcrumbs">
-		<ul>
-			<li>TOP</li>
-		</ul>
-	</nav>
 	<section>
-		<p>
-			<NuxtLink v-bind:to="{name: 'member-memberList'}">
-				会員管理はこちら
-			</NuxtLink>
-		</p>
+		<h2>都市リスト</h2>
+		<ul>
+			<li
+				v-for="[id, city] in cityList"
+				v-bind:key="id">
+				<NuxtLink v-bind:to="{name: 'WeatherInfo-id', params: {id: id}}">
+					{{city.name}}の天気
+				</NuxtLink>
+			</li>
+		</ul>
 	</section>
 </template>

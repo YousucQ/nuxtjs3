@@ -1,31 +1,39 @@
-<template>
-	<NuxtLayout>
-		<NuxtPage/>
-	</NuxtLayout>
-</template>
+<script setup lang="ts">
+import type {City} from "@/interfaces";
 
-<style>
-main {
-	border: blue 1px solid;
-	padding: 10px;
-}
-#breadcrumbs ul li {
-	display: inline;
-	list-style-type: none;
-}
-#breadcrumbs {
-	margin-left: 0px;
-}
-#breadcrumbs ul {
-	padding-left: 0px;
-}
-#breadcrumbs ul .current {
-	color: red;
-}
-#breadcrumbs ul li:before {
-	content: " > ";
-}
-#breadcrumbs ul li:first-child:before {
-	content: none;
-}
-</style>
+//都市情報リストをステートとして用意。
+useState<Map<number, City>>(
+	"cityList",
+	(): Map<number, City> => {
+		const cityListInit = new Map<number, City>();
+		cityListInit.set(1853909,
+			{
+				id: 1853909,
+				name: "大阪",
+				q: "Osaka"
+			});
+		cityListInit.set(1859171,
+			{
+				id: 1859171,
+				name: "神戸",
+				q: "Kobe"
+			});
+		cityListInit.set(1862627,
+			{
+				id: 1862627,
+				name: "姫路",
+				q: "Himeji"
+			});
+		return cityListInit;
+	}
+);
+</script>
+
+<template>
+	<header>
+		<h1>useFetchサンプル</h1>
+	</header>
+	<main>
+		<NuxtPage/>
+	</main>
+</template>
